@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="UTF-8"?>
+<ContentPage 
+	xmlns="http://xamarin.com/schemas/2014/forms" 
+	xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml" 
+	xmlns:controls="clr-namespace:AdvancedCustomRendererTest.Controls;assembly=AdvancedCustomRendererTest"
+	x:Class="AdvancedCustomRendererTest.AdvancedListViewPage"
+	BackgroundColor="Silver"
+	Padding="20"
+	>
+	<ContentPage.Content>
+		<StackLayout>
+			<StackLayout Orientation="Horizontal">
+				<Label
+					Text="Position" TextColor="White"
+					/>
+				<Label
+					Text="{Binding ListPosition}" TextColor="White" 
+					/>
+			</StackLayout>
+			<controls:AdvancedListView
+				ItemsSource="{Binding ListItems}"
+				VerticalOptions="FillAndExpand"
+				SeparatorVisibility="None"
+				HasUnevenRows="true"
+				HasVerticalScrollbar="false"
+				TopOverlayHeightPercent="25" BottomOverlayHeightPercent="25"
+				TopOverlayOuterColor="Transparent" 
+				TopOverlayInnerColor="Transparent"
+				BottomOverlayInnerColor="Transparent"
+				BottomOverlayOuterColor="Transparent" 
+				SelectedItem="{Binding SelectedListItem, Mode=TwoWay}"
+				>
+				<controls:AdvancedListView.ItemTemplate>
+					<DataTemplate>
+						<ViewCell>
+							<StackLayout BackgroundColor="Transparent">
+								<BoxView HeightRequest="3" HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+								<StackLayout Orientation="Horizontal" VerticalOptions="Center"  BackgroundColor="Transparent">
+									<Label Text="{Binding Title}" TextColor="Navy" VerticalOptions="Center" YAlign="Center" BackgroundColor="Transparent" />
+									<BoxView HorizontalOptions="FillAndExpand" BackgroundColor="Transparent" />
+									<Label Text="{Binding Note}" TextColor="Navy" VerticalOptions="Center" XAlign="End" YAlign="Center" BackgroundColor="Transparent" />
+								</StackLayout>
+								<BoxView HeightRequest="1" HorizontalOptions="FillAndExpand" BackgroundColor="White" />
+							</StackLayout>
+						</ViewCell>
+					</DataTemplate>
+				</controls:AdvancedListView.ItemTemplate>
+			</controls:AdvancedListView>
+		</StackLayout>
+	</ContentPage.Content>
+</ContentPage>

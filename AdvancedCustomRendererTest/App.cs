@@ -8,22 +8,18 @@ namespace AdvancedCustomRendererTest
     {
         public App()
         {
+            var listPageModel = new AdvancedListViewPageModel();
+            var listPage = new AdvancedListViewPage();
+            listPage.Title = "Advanced ListView";
+
+            listPage.BindingContext = listPageModel;
+
+            var homePage = new NavigationPage(listPage);
+            homePage.BarBackgroundColor = Color.Silver;
+            homePage.BarTextColor = Color.White;
+
             // The root page of your application
-            MainPage = new ContentPage
-            {
-                Content = new StackLayout
-                {
-                    VerticalOptions = LayoutOptions.Center,
-                    Children =
-                    {
-                        new Label
-                        {
-                            XAlign = TextAlignment.Center,
-                            Text = "Welcome to Xamarin Forms!"
-                        }
-                    }
-                }
-            };
+            MainPage = homePage;
         }
 
         protected override void OnStart()
